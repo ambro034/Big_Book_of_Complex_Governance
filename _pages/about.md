@@ -1,7 +1,7 @@
 ---
-title: About
-author: Tao He
-date: 2022-02-04
+title: About US
+author: Graham Ambrose
+date: 2026-06-20
 category: Jekyll
 layout: post
 ---
