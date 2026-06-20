@@ -9,7 +9,7 @@ description: >
 version:          1.0
 gitbook_version:  3.2.3
 
-url:              'https://ambro034.github.io/Big_Book_of_Complex_Governance/'
+url:              'https://ambro034.github.io/jekyll-gitbook/'
 baseurl:          '/jekyll-gitbook'
 rss:              RSS
 
