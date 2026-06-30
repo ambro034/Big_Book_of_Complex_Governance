@@ -4,7 +4,12 @@ author: Graham Ambrose
 date: 2026-06-20
 category: Jekyll
 layout: post
-tag: [this, this, this, that, the]
+tag: 
+  - this
+  - this
+  - this
+  - that
+  - the
 ---
 
 TEXT TEXT TEXT
