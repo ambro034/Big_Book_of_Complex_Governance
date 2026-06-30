@@ -52,3 +52,26 @@ layout: post
   </ul>
 {% endfor %}
 
+## Test
+
+<div class="extracted-content">
+  {% assign gathered_content = "" | split: "" %}
+  
+  {% for post in site.posts %}
+    {% assign extracted = post.content | split: '<div style="text-align: right;">' %}
+    {% for item in extracted %}
+      {% if forloop.index0 > 0 %}
+        {% assign content_piece = item | split: '</div>' | first | strip %}
+        {% assign gathered_content = gathered_content | push: content_piece %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  {% for item in gathered_content %}
+    <div class="right-aligned-item">
+      {{ item }}
+    </div>
+  {% endfor %}
+</div>
+
+
