@@ -57,9 +57,9 @@ layout: post
     {% for post in site.tags[name] %}
       {% assign name = post | first %}
       {% assign count = post | last | size %}
-        <li>
-          <a href="{{ post.url | relative_url }}">{{ name }} ({{ count }})</a> 
-        </li>
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ name }} ({{ count }})</a> 
+      </li>
     {% endfor %}
   </ul>
 {% endfor %}
