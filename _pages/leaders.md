@@ -95,6 +95,30 @@ layout: post
   {% endfor %}
 </div>
 
+<hr>
+
+<!-- Detailed Section with Posts -->
+<div class="extracted-content">
+  {% assign gathered_content = "" | split: "" %}
+  
+  {% for post in site.posts %}
+    {% assign extracted = post.content | split: '<div style="text-align: right"><i> submitted by ' %}
+    {% for item in extracted %}
+      {% if forloop.index0 > 0 %}
+        {% assign content_piece = item | split: '</i></div>' | first | strip %}
+        <h4 id="{{ content_piece | slugify }}">{{ name }}</h4>
+        <ul>
+          {% for post in site.tags[name] %}
+            <li>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a> 
+            </li>
+          {% endfor %}
+        </ul>
+
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
 ### Test 3
 
 
