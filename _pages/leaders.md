@@ -55,7 +55,7 @@ layout: post
   <h5 id="{{ name | slugify }}">{{ name }}</h5>
   <ul>
     {% for post in site.tags[name] %}
-      {% assign name = post.title | first %}
+      {% assign name = post.title %}
       {% assign count = post.title | last | size %}
       <li>
         <a href="{{ post.url | relative_url }}">{{ name }} ({{ count }})</a> 
