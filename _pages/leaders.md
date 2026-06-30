@@ -52,3 +52,23 @@ layout: post
   </ul>
 {% endfor %}
 
+
+### Test
+
+
+<h2>Searching for occurrences of: <strong>names</strong></h2>
+
+<!-- Summary Name Counts at the Top -->
+
+<ul>
+  {% for post in site.posts %}
+    {% if post.comments %}
+      {% for comment in post.comments %}
+        {% assign name = comment | first %}
+        {% assign count = comment | last | size %}
+        <a href="#{{ name | slugify }}" style="margin-right: 15px;">
+            {{ name }} ({{ count }})
+        </a>
+      {% endfor %}
+</ul>
+
