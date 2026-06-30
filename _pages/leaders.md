@@ -86,10 +86,9 @@ layout: post
         {% if forloop.index0 > 0 %}
           {% assign content_piece = item | split: '</i></div>' | first %}
         
-          {% assign name = content_piece | first %}
           {% assign count = content_piece | last | size %}
-          <a href="#{{ name | slugify }}" style="margin-right: 15px;">
-            {{ name }} ({{ count }})
+          <a href="#{{ content_piece | slugify }}" style="margin-right: 15px;">
+            {{ content_piece }} ({{ count }})
           </a>
 
         {% endif %}
