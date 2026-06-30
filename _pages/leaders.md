@@ -70,25 +70,24 @@ layout: post
 
 ### Test 2
 
-{%- assign total_comment_tags = 0 -%}
 
-<ul>
-{%- for post in site.posts -%}
-  {%- comment -%} 
-    Split the unrendered content string everywhere the string "{% comment %}" occurs.
-    The number of elements in the resulting array will be exactly (occurrences + 1).
-  {%- endcomment -%}
-  {%- assign fragments = post.content | split: '{% comment %}' -%}
-  {%- assign comment_count = fragments.size | minus: 1 -%}
+{% assign global_comments = "" %}
 
-  {%- if comment_count > 0 -%}
-    <li>
-      <strong><a href="{{ post.url }}">{{ post.title }}</a></strong>: 
-      {{ comment_count }} comment tag(s) found
-    </li>
-    {%- assign total_comment_tags = total_comment_tags | plus: comment_count -%}
-  {%- endif -%}
-{%- endfor -%}
-</ul>
+{% comment %} Loop through posts to build the comment string {% endcomment %}
+{% assign sorted_posts = site.posts | reverse %}
+{% for post in sorted_posts %}
+  {% include keep-comment.html %}
+  {% comment %} This dummy include forces the evaluation of the post content {% endcomment %}
+  {% capture discard %}{{ post.content }}{% endcapture %}
+{% endfor %}
 
-<p><strong>Total {% raw %}{% comment %}{% endraw %} tags used across all posts:</strong> {{ total_comment_tags }}</p>
+{% assign comments_array = global_comments | split: "|" %}
+
+<ol>
+  {% for comment in comments_array %}
+    {% if comment != "" %}
+      <li>{{ comment | strip }}</li>
+    {% endif %}
+  {% endfor %}
+</ol>
+
