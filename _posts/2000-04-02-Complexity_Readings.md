@@ -1,5 +1,5 @@
 ---
-title:      Complexity Readings
+title: 1A) Complexity Readings
 author: Graham Ambrose
 date: 2026-06-20
 category: Jekyll
