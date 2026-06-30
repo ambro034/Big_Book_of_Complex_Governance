@@ -54,7 +54,6 @@ layout: post
 
 
 ### Test
-
 {% for post in site.posts %}
   {% if post.comments %}
     {% for comment in post.comments %}
