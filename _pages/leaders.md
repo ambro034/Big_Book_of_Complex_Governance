@@ -67,3 +67,14 @@ layout: post
     {% endfor %}
   {% endif %}
 {% endfor %}
+
+### Test 2
+
+{% assign total_comments = 0 %}
+{% for post in site.posts %}
+  {% assign post_comments = site.data.comments[post.slug] %}
+  {% if post_comments %}
+    {% assign total_comments = total_comments | plus: post_comments.size %}
+  {% endif %}
+{% endfor %}
+<p>Total Site Comments: {{ total_comments }}</p>
