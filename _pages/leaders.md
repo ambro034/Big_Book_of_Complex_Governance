@@ -52,6 +52,7 @@ layout: post
   </ul>
 {% endfor %}
 
+<!--
 ## Test
 
 <div class="extracted-content">
@@ -98,8 +99,9 @@ layout: post
 </div>
 
 <hr>
-
+-->
 <!-- Detailed Section with Posts -->
+<!-- 
 <div class="extracted-content">
   {% assign gathered_content = "" | split: "" %}
   
@@ -123,3 +125,4 @@ layout: post
 </div>
 
 ### Test 3
+-->
