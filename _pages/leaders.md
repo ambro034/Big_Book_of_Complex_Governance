@@ -106,9 +106,9 @@ layout: post
     {% for item in extracted %}
       {% if forloop.index0 > 0 %}
         {% assign content_piece = item | split: '</i></div>' | first | strip %}
-        <h4 id="{{ content_piece | slugify }}">{{ name }}</h4>
+        <h4 id="{{ content_piece | slugify }}">{{ content_piece }}</h4>
         <ul>
-          {% for post in site.tags[name] %}
+          {% for post in post.content[content_piece] %}
             <li>
               <a href="{{ post.url | relative_url }}">{{ post.title }}</a> 
             </li>
