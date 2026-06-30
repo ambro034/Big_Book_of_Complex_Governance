@@ -7,8 +7,6 @@ layout: post
 ---
 
 
-<p>This site has {{ site.tags | size }} community contributors</p>
-
 <!-- Summary Counts of total Contributions -->
 
 {% assign total_tags = 0 %}
