@@ -9,11 +9,6 @@ tag: [this, this, this, that, the]
 
 TEXT TEXT TEXT
 
-## Complexity
-
-TEXT TEXT TEXT
-
----
 ## Complex Adaptive Systems
 
 TEXT TEXT TEXT
