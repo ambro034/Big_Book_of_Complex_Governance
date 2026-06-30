@@ -6,21 +6,18 @@ category: Jekyll
 layout: post 
 ---
 
+
+<p>This site has {{ site.tags | size }} community contributors</p>
+
 <!-- Summary Counts of total Contributions -->
 
-{% assign target_string = "<div style="text-align: right"><i> submitted by " %}
-{% assign total_count = 0 %}
-
-{% comment %} Loop through all blog posts {% endcomment %}
-{% for post in site.posts %}
-  {% if post.content contains target_string %}
-    {% assign parts = post.content | split: target_string %}
-    {% assign occurrences = parts.size | minus: 1 %}
-    {% assign total_count = total_count | plus: occurrences %}
-  {% endif %}
+{% assign total_tags = 0 %}
+{% for tag in site.tags %}
+  {% assign tag_count = tag[1] | size %}
+  {% assign total_tags = total_tags | plus: tag_count %}
 {% endfor %}
 
-<p>Our community has contributed <strong>{{ total_count }}</strong> resources to produce this site.</p>
+<p><strong>{{ site.tags | size }} members </strong> of our community have contributed <strong>{{ total_tags  }}</strong> resources to produce this site.</p>
 
 
 
