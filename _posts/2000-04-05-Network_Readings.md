@@ -1,11 +1,12 @@
 ---
-title: 1.A Complexity Readings
+title: 1.C Networks
 author: Graham Ambrose
 date: 2026-06-20
 category: Jekyll
 layout: post
 tag: [this, this, this, that, the]
 ---
+
 
 TEXT TEXT TEXT
 

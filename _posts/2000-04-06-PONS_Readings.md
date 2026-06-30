@@ -1,5 +1,5 @@
 ---
-title: 1.A Complexity Readings
+title: 1.C.i Purpose Oriented Networks (PONs)
 author: Graham Ambrose
 date: 2026-06-20
 category: Jekyll

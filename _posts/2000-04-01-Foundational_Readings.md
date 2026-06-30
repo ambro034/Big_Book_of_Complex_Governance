@@ -1,5 +1,5 @@
 ---
-title: 1) Foundational Readings
+title: 1 Foundational Readings
 author: Graham Ambrose
 date: 2026-06-20
 category: Jekyll
@@ -8,24 +8,6 @@ tag: [this, this, this, that, the]
 ---
 
 TEXT TEXT TEXT
-
-## Complex Adaptive Systems
-
-TEXT TEXT TEXT
-
----
-
-## Networks
-
-TEXT TEXT TEXT
-
----
-
-### Purpose Oriented Networks (PONs)
-
-TEXT TEXT TEXT
-
----
 
 ### System Oriented Networks (SONs)
 
