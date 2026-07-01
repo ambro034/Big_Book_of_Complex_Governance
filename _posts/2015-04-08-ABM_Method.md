@@ -1,5 +1,5 @@
 ---
-title: 4. Methodological Resources
+title: 4.B Agent Based Modeling (ABM)
 author: Graham Ambrose
 date: 2026-06-20
 category: Jekyll
@@ -7,6 +7,7 @@ layout: post
 tag:
 
 ---
+
 
 > 
 > ##### Add a Resource Here!
@@ -18,7 +19,6 @@ tag:
 >Description of the resource here
 >
 > <div style="text-align: right"><i> submitted by YOU! </i></div>
-
 
 ---
 [About Us](../_pages/About/about.md)

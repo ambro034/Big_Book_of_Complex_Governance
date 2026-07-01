@@ -1,5 +1,5 @@
 ---
-title: 4. Methodological Resources
+title: 4.D Qualitative Comparative Analysis (QCA)
 author: Graham Ambrose
 date: 2026-06-20
 category: Jekyll

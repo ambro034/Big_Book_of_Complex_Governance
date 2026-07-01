@@ -1,5 +1,5 @@
 ---
-title: 4. Methodological Resources
+title: 4.A.i Descriptive Network Analysis
 author: Graham Ambrose
 date: 2026-06-20
 category: Jekyll
@@ -18,7 +18,6 @@ tag:
 >Description of the resource here
 >
 > <div style="text-align: right"><i> submitted by YOU! </i></div>
-
 
 ---
 [About Us](../_pages/About/about.md)
