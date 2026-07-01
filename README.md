@@ -1,6 +1,7 @@
 
+# Jekyll Overview
 
-Make Jelly site have a GitBook look!
+This site uses the Jekyll Theme. For more information on Jekyll, please see the subsections below.
 
 ## Demo
 
@@ -21,211 +22,164 @@ for Jekyll to rendering markdown documents to HTML, thus the whole site can be d
 to [Github Pages][1] without generating and uploading HTML bundle every time when there are
 changes to the original repo.
 
-## How to Get Started
+# Site Implementation 
 
-This theme can be used just as other [Jekyll themes][1] and support [remote theme][12],
-see [the official guide][13] as well.
+## Basic File Types
 
-You can introduce this jekyll theme into your own site by either
+There are five file types that should be edited to implement the functionality of this site. I will discuss them from most likely to edit to least likely to edit. 
 
-- [Fork][3] this repository and add your markdown posts to the `_posts` folder.
-- Use as a remote theme in your [`_config.yml`][14](just like what we do for this
-  site itself),
+### Posts, Pages, and Other files
 
-```yaml
-remote_theme: sighingnow/jekyll-gitbook
+These are the base files that make up the individual pages of the site. Before getting into their structure and content, there are a few dynamics to address.
+
+1. In the left-hand menu, the content order will always be (1) `Home-page.md` (discussed below), (2) all files in the `_post` folder, (3) all files in the `_pages` folder, and (4) all files in the `_others` folder.
+
+2. Within the `_post` folder, the individual markdown (`.md`) files are re-ordered based on the date in their name and NOT the data in the frontmater of the file. 
+    - All `_post` files must be in the following format: `YYYY-MM-DD-Name_of_File.md`.
+    - If it does not start with `YYYY-MM-DD-`it will not appear in the site.
+    - As you can see, I have added files by category (year) with space for file addition.
+
+#### Overall Markdown Format
+
+**Frontmatter**
+
+All files must begin with a 'frontmatter' section. Without this section, the markdown file will not be converted into html, and the page will not appear on the site. 
+
+The standard frontmatter section for a `_post` is: 
+
+```markdown 
+---
+title: 1 Foundational Readings
+author: Graham Ambrose
+date: 2026-06-20
+category: Jekyll
+layout: post
+tag: 
+  - Name of contributor 1
+  - Name of contributor 2
+  - ...
+---
 ```
 
-### Deploy Locally with Jekyll Serve
+The `title` is what will appear in the left-hand menu and will be the heading for the rendered page.
 
-This theme can be ran locally using Ruby and Gemfiles.
+The `author`, `date`, and `category` are not manditory but are nice for reference.
 
-[Testing your GitHub Pages site locally with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) - GitHub
+The `layout` should not change with the file type -- i.e., other and page should also use `post`
 
-## Full-text search
+Finally, we will leverage `tag` to keep track of contributors' names. If a resource is added, the contributor's names should be added to the `-` list on a new line. This is leveraged to create the leader board in the `leaders.md` file.
 
-The search functionality in jekyll-gitbook theme is powered by the [gitbook-plugin-search-pro][5] plugin and is enabled by default.
+**Basic Structure**
 
-[https://sighingnow.github.io/jekyll-gitbook/?q=generated](https://sighingnow.github.io/jekyll-gitbook/?q=generated)
-
-## Code highlight
-
-The code highlight style is configurable the following entry in `_config.yaml`:
-
-```yaml
-syntax_highlighter_style: colorful
-```
-
-The default code highlight style is `colorful`, the full supported styles can be found from [the rouge repository][6]. Customized
-style can be added to [./assets/gitbook/rouge/](./assets/gitbook/rouge/).
-
-## How to generate TOC
-
-The jekyll-gitbook theme leverages [jekyll-toc][4] to generate the *Contents* for the page.
-The TOC feature is not enabled by default. To use the TOC feature, modify the TOC
-configuration in `_config.yml`:
-
-```yaml
-toc:
-    enabled: true
-    h_min: 1
-    h_max: 3
-```
-
-## Google Analytics, etc.
-
-The jekyll-gitboook theme supports embedding the [Google Analytics][7], [CNZZ][8] and [Application Insights][9] website analytical tools with the following
-minimal configuration in `_config.yaml`:
-
-```yaml
-tracker:
-  google_analytics: "<YOUR GOOGLE ANALYTICS KEY, e.g, UA-xxxxxx-x>"
-```
-
-Similarly, CNZZ can be added with the following configuration in `_config.yaml`
-
-```yaml
-tracker:
-  cnzz: "<YOUR CNZZ ANALYTICS KEY, e.g., xxxxxxxx>"
-```
-
-Application Insights can be added with the following configuration in `_config.yaml`
-
-```yaml
-tracker:
-  application_insights: "<YOUR APPLICATION INSIGHTS CONNECTION STRING>"
-```
-
-## Disqus comments
-
-[Disqus](https://disqus.com/) comments can be enabled by adding the following configuration in `_config.yaml`:
-
-```yaml
-disqushandler: "<YOUR DISQUS SHORTNAME>"
-```
-
-## Jekyll collections
-
-Jekyll's [collections][15] is supported to organize the pages in a more fine-grained manner, e.g.,
-
-```yaml
-collections:
-  pages:
-    output: true
-    sort_by: date
-    permalink: /:collection/:year-:month-:day-:title:output_ext
-  others:
-    output: true
-    sort_by: date
-    permalink: /:collection/:year-:month-:day-:title:output_ext
-```
-
-An optional `ordered_collections` key can be added to `_config.yaml` to control the order of collections in the sidebar:
-
-```yaml
-ordered_collections:
-  - posts
-  - pages
-  - others
-```
-
-If not specified, the order of collections would be decided by Jekyll. Note that the key `posts` is a special collection
-that indicates the `_posts` pages of Jekyll.
-
-## Extra StyleSheet or Javascript elements
-
-You can add extra CSS or JavaScript references using configuration collections:
-
-- extra_css: for additional style sheets. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
-- extra_header_js: for additional scripts to be included in the `<head>` tag, after the `extra_css` has been added. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
-- extra_footer_js: for additional scripts to be included at the end of the HTML document, just before the site tracking script. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
-
-## Customizing font settings
-
-The fonts can be customized by modifying the `.book.font-family-0` and `.book.font-family-1` entry in [`./assets/gitbook/custom.css`][10],
-
-```css
-.book.font-family-0 {
-    font-family: Georgia, serif;
-}
-.book.font-family-1 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-```
-
-## Tips, Warnings and Dangers blocks
-
-The jekyll-gitbook theme supports customized kramdown attributes (`{: .block-tip }`, `{: .block-warning }`,
-`{: .block-danger }`) like that displayed in [the discord.js website][11]. The marker can be used like
+The overall structure of the page is the same as basic mark down. For example, the following code:
 
 ```markdown
-> ##### TIP
+# Heading #1
+Text
+
+---
+## Heading #2
+- Text
+- Text
+
+---
+### Heading #3
+1. Text
+2. Text
+
+---
+#### Heading #4
+1. Text
+    - Text
+    - Text
+2. Text
+
+---
+##### Heading #5
+Text
+
+```
+
+results in:
+
+# Heading #1
+Text
+
+---
+## Heading #2
+- Text
+- Text
+
+---
+### Heading #3
+1. Text
+2. Text
+
+---
+#### Heading #4
+1. Text
+    - Text
+    - Text
+2. Text
+
+---
+##### Heading #5
+Text
+
+**Resource Card**
+
+The following is the template for all resource cards:
+
+```markdown
+> 
+> ##### Add a Resource Here!
 >
-> This guide is last tested with @napi-rs/canvas^0.1.20, so make sure you have
-> this or a similar version after installation.
-{: .block-tip }
+>🌐  **Link:** [Stand-in Link to Home Page](https://ambro034.github.io/Big_Book_of_Complex_Governance/)  
+>
+><i>Authors</i>
+>
+>Description of the resource here
+>
+> <div style="text-align: right"><i> submitted by YOU! </i></div>
 ```
 
-Rendered page can be previewed from
+Resulting in:
 
-[https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html](https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html)
+> 
+> ##### Add a Resource Here!
+>
+>🌐  **Link:** [Stand-in Link to Home Page](https://ambro034.github.io/Big_Book_of_Complex_Governance/) 
+>
+><i>Authors</i>
+>
+>Description of the resource here
+>
+> <div style="text-align: right"><i> submitted by YOU! </i></div>
 
-## Cover image inside pages
-
-The jekyll-gitbook theme supports adding a cover image to a specific page by adding
-a `cover` field to the page metadata:
-
-```diff
-  ---
-  title: Page with cover image
-  author: Tao He
-  date: 2022-05-24
-  category: Jekyll
-  layout: post
-+ cover: /assets/jekyll-gitbook/dinosaur.gif
-  ---
-```
-
-The effect can be previewed from
-
-[https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-05-24-page_cover.html](https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-05-24-page_cover.html)
-
-## Diagrams with mermaid.js
-
-This jekyll-theme supports [mermaid.js](https://mermaid.js.org/) to render diagrams
-in markdown.
-
-To enable the mermaid support, you need to set `mermaid: true` in the front matter
-of your post.
+Each line should start with a `>`. If there is a return, you will need a new `>`. If there is a break in `>`,  it will result in a new card. For example:
 
 ```markdown
----
-mermaid: true
----
+> 
+> ##### Resource Here #1
+> Text
+
+> 
+> ##### Resource Here #2
+> Text
 ```
 
-The example can be previewed from
+Results in:
 
-[https://sighingnow.github.io/jekyll-gitbook/jekyll/2023-08-31-mermaid.html](https://sighingnow.github.io/jekyll-gitbook/jekyll/2023-08-31-mermaid.html)
+> 
+> ##### Resource Here #1
+> Text
+
+> 
+> ##### Resource Here #2
+> Text
 
 ## License
 
 This work is open sourced under the Apache License, Version 2.0.
 
 Copyright 2019 Tao He.
-
-[1]: https://pages.github.com
-[2]: https://pages.github.com/themes
-[3]: https://github.com/sighingnow/jekyll-gitbook/fork
-[4]: https://github.com/allejo/jekyll-toc
-[5]: https://github.com/gitbook-plugins/gitbook-plugin-search-pro
-[6]: https://github.com/rouge-ruby/rouge/tree/master/lib/rouge/themes
-[7]: https://analytics.google.com/analytics/web/
-[8]: https://www.cnzz.com/
-[9]: https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
-[10]: https://github.com/sighingnow/jekyll-gitbook/blob/master/gitbook/custom.css
-[11]: https://discordjs.guide/popular-topics/canvas.html#setting-up-napi-rs-canvas
-[12]: https://rubygems.org/gems/jekyll-remote-theme
-[13]: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
-[14]: https://github.com/sighingnow/jekyll-gitbook/blob/master/_config.yml
-[15]: https://jekyllrb.com/docs/collections/
